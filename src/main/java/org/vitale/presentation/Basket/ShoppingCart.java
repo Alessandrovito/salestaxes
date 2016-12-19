@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.vitale.services.Model.Item;
-import org.vitale.services.ShoppingController.Controller;
+import org.vitale.services.ShoppingController.ShoppingController;
 import org.vitale.services.controller.ControllerServices;
 
 
@@ -21,20 +21,17 @@ public class ShoppingCart {
 
 	//private ControllerServices cs = new ControllerServices();
 	
-	private Controller ctr = Controller.getController();
+	private ShoppingController ctr = new ShoppingController();
 	
-	private List<Item> basket = new ArrayList<Item>();
 
 	public boolean addItemInBasket(String nameItem, int cnt,
 			String nameCategory, boolean isImported, float price) {
 
-		Item it =  ctr.insertItem(nameItem, cnt, nameCategory, isImported, price);
+		boolean ret =  ctr.insertItem(nameItem, cnt, nameCategory, isImported, price);
 		
-		if (it == null)
+		if (ret == false)
 			return false;
 	
-		basket.add(it);
-		
 		return true;
 		
 
@@ -44,7 +41,7 @@ public class ShoppingCart {
 
 		StringBuilder toPrint = new StringBuilder();
 
-		Iterator<Item> itIter = basket.iterator();
+		Iterator<Item> itIter = ctr.findAllItemsInShop().iterator();
 		float totalPrice = 0.0f;
 		float totalTax = 0.0f;
 		float currentAppliedTax = 0.0f;

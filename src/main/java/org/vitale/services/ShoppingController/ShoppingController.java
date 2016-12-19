@@ -15,17 +15,16 @@ import org.vitale.services.controller.ControllerCategory;
 import org.vitale.services.controller.ControllerItem;
 import org.vitale.services.controller.ControllerTax;
 
-public class Controller {
+public class ShoppingController {
 	
 private static final float round=0.05f;
 	
 	private  CategoryDAO categoryDAO = null;
 	private  TaxDAO taxDAO = null;
 	private  ItemDAO itemDAO = null;
-
-	private static Controller controller;
 	
-	protected Controller(){
+
+	public ShoppingController(){
 		InitDAO();
 		feedingInitDAO();
 		
@@ -47,12 +46,6 @@ private static final float round=0.05f;
 	}
 	
 	
-	public static Controller getController() {
-		if (controller == null)
-			controller = new Controller();
-
-		return controller;
-	}
 	
 	private Boolean InitializationFeedingCategory(){
 		
@@ -109,7 +102,7 @@ private static final float round=0.05f;
 	
 	
 	
-public Item insertItem(String nameItem, int cnt, String nameCategory, boolean isImported, float price){
+public boolean insertItem(String nameItem, int cnt, String nameCategory, boolean isImported, float price){
 		
 		Item itemFromShop = new Item();
 		
@@ -125,7 +118,7 @@ public Item insertItem(String nameItem, int cnt, String nameCategory, boolean is
 		itemFromShop.setQuantity(cnt);
 		
 		itemDAO.save(itemFromShop);
-		return Item;
+		return true;
 		
 	}
 	
