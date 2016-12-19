@@ -24,15 +24,15 @@ public class ShoppingCart {
 	private ShoppingController ctr = new ShoppingController();
 	
 
-	public boolean addItemInBasket(String nameItem, int cnt,
+	public Item addItemInBasket(String nameItem, int cnt,
 			String nameCategory, boolean isImported, float price) {
 
-		boolean ret =  ctr.insertItem(nameItem, cnt, nameCategory, isImported, price);
+		Item it =  ctr.insertItem(nameItem, cnt, nameCategory, isImported, price);
 		
-		if (ret == false)
-			return false;
+		if (it == null)
+			return null;
 	
-		return true;
+		return it;
 		
 
 	}

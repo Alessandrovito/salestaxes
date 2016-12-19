@@ -3,6 +3,7 @@ package org.vitale.services.ShoppingController;
 import java.util.List;
 
 import org.vitale.services.DAO.CategoryDAO;
+import org.vitale.services.DAO.FactoryDAO;
 import org.vitale.services.DAO.ItemDAO;
 import org.vitale.services.DAO.TaxDAO;
 import org.vitale.services.DAOImpl.CategoryDAOImpl;
@@ -11,9 +12,7 @@ import org.vitale.services.DAOImpl.TaxDAOImpl;
 import org.vitale.services.Model.Category;
 import org.vitale.services.Model.Item;
 import org.vitale.services.Model.Tax;
-import org.vitale.services.controller.ControllerCategory;
-import org.vitale.services.controller.ControllerItem;
-import org.vitale.services.controller.ControllerTax;
+
 
 public class ShoppingController {
 	
@@ -30,13 +29,14 @@ private static final float round=0.05f;
 		
 	}
 	
-	public void InitDAO(){
-		// Implementation dipendent : we could  use dependency injection to astract this
-		// More important sequence: First create Category, second TaxDao after 
 
-		categoryDAO =  new  CategoryDAOImpl();
-		taxDAO =  new TaxDAOImpl();
-		itemDAO =  new  ItemDAOImpl();
+	public void InitDAO(){
+
+		FactoryDAO saleTestImpl = FactoryDAO.getFactoryDAO();
+		
+		categoryDAO =  saleTestImpl.getCategoryDAO();
+		taxDAO =  saleTestImpl.getTaxDAO();
+		itemDAO =  saleTestImpl.getItemDAO();
 
 	}
 	
@@ -67,8 +67,6 @@ private static final float round=0.05f;
 			
 			//Feeding 
 			Category current = null;
-			
-			CategoryDAO categoryDAO = ControllerCategory.getControllerCategory().getCategoryDAO();
 			
 			current = categoryDAO.findByName(CategoryDAO.CAT_BOOK);
 			if (current== null)
@@ -102,15 +100,14 @@ private static final float round=0.05f;
 	
 	
 	
-public boolean insertItem(String nameItem, int cnt, String nameCategory, boolean isImported, float price){
+public Item insertItem(String nameItem, int cnt, String nameCategory, boolean isImported, float price){
 		
 		Item itemFromShop = new Item();
-		
-		
+	
 		Category cat = categoryDAO.findByName(nameCategory);
 		
 		if (cat == null)
-				return false;
+				return null;
 		
 		itemFromShop.setCategory(cat);
 		itemFromShop.setName(nameItem);
@@ -118,7 +115,7 @@ public boolean insertItem(String nameItem, int cnt, String nameCategory, boolean
 		itemFromShop.setQuantity(cnt);
 		
 		itemDAO.save(itemFromShop);
-		return true;
+		return itemFromShop;
 		
 	}
 	
