@@ -1,7 +1,11 @@
 package org.vitale.presentation.Basket;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 import org.vitale.services.Model.Item;
+import org.vitale.services.ShoppingController.Controller;
 import org.vitale.services.controller.ControllerServices;
 
 
@@ -15,12 +19,24 @@ import org.vitale.services.controller.ControllerServices;
 
 public class ShoppingCart {
 
-	private ControllerServices cs = new ControllerServices();
+	//private ControllerServices cs = new ControllerServices();
+	
+	private Controller ctr = Controller.getController();
+	
+	private List<Item> basket = new ArrayList<Item>();
 
 	public boolean addItemInBasket(String nameItem, int cnt,
 			String nameCategory, boolean isImported, float price) {
 
-		return cs.insertItem(nameItem, cnt, nameCategory, isImported, price);
+		Item it =  ctr.insertItem(nameItem, cnt, nameCategory, isImported, price);
+		
+		if (it == null)
+			return false;
+	
+		basket.add(it);
+		
+		return true;
+		
 
 	}
 
@@ -28,7 +44,7 @@ public class ShoppingCart {
 
 		StringBuilder toPrint = new StringBuilder();
 
-		Iterator<Item> itIter = cs.findAllItemsInShop().iterator();
+		Iterator<Item> itIter = basket.iterator();
 		float totalPrice = 0.0f;
 		float totalTax = 0.0f;
 		float currentAppliedTax = 0.0f;
@@ -37,7 +53,7 @@ public class ShoppingCart {
 
 		while (itIter.hasNext()) {
 			Item currentItem = itIter.next();
-			currentAppliedTax = cs.calculateTaxPerItem(currentItem);
+			currentAppliedTax = ctr.calculateTaxPerItem(currentItem);
 
 			toPrint.append("\n").append(
 					currentItem.toStringOutputWithTax(currentAppliedTax));
