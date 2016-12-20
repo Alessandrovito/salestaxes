@@ -128,7 +128,6 @@ public class TestDrivenDev {
 		System.out.println("Tax Applied is " + priceWithTax);
 		Assert.assertEquals(10.50f, priceWithTax, 0.0f);
 		
-		
 	}
 	
 	@After
