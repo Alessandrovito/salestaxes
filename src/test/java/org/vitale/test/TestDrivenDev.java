@@ -59,13 +59,13 @@ public class TestDrivenDev {
 		
 	
 		priceWithTax += ctr.calculateTaxPerItem(ctr.insertItem("book", 1, CategoryDAO.CAT_BOOK, false,  12.49f));
-		System.out.print("Total Applied tax " + priceWithTax);
+		System.out.println("Total Applied tax " + priceWithTax);
 		
 		priceWithTax += ctr.calculateTaxPerItem(ctr.insertItem("music", 1, CategoryDAO.CAT_GENERIC, false, 14.99f));
-		System.out.print("Total Applied tax" + priceWithTax);
+		System.out.println("Total Applied tax" + priceWithTax);
 		
 		priceWithTax += ctr.calculateTaxPerItem(ctr.insertItem("chocolate bar", 1, CategoryDAO.CAT_FOOD, false, 0.85f));
-		System.out.print("Total Applied tax " + priceWithTax);
+		System.out.println("Total Applied tax " + priceWithTax);
 		
 		
 
@@ -107,10 +107,10 @@ public class TestDrivenDev {
 		
 	
 		priceWithTax += ctr.calculateTaxPerItem(ctr.insertItem("box of chocolates",1,  CategoryDAO.CAT_FOOD, true,  10.00f));
-		System.out.print("Total Applied tax " + priceWithTax);
+		System.out.println("Total Applied tax " + priceWithTax);
 		
 		priceWithTax += ctr.calculateTaxPerItem(ctr.insertItem("bottle of perfume ",1, CategoryDAO.CAT_GENERIC, true, 47.50f));
-		System.out.print("Total Applied tax" + priceWithTax);
+		System.out.println("Total Applied tax" + priceWithTax);
 			
 
 		Assert.assertEquals(7.65f, priceWithTax, 0.0f);
@@ -125,7 +125,7 @@ public class TestDrivenDev {
 		
 		Item boxChoco = ctr.insertItem("box of chocolates",1,  CategoryDAO.CAT_FOOD, true,  10.00f);
 		priceWithTax = ctr.calculatePriceWithTaxPerItem(boxChoco);
-		System.out.print("Tax Applied is " + priceWithTax);
+		System.out.println("Tax Applied is " + priceWithTax);
 		Assert.assertEquals(10.50f, priceWithTax, 0.0f);
 		
 		
