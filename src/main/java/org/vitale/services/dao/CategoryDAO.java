@@ -1,14 +1,14 @@
-package org.vitale.services.DAO;
+package org.vitale.services.dao;
 
 import java.util.List;
 
-import org.vitale.services.Model.Category;
+import org.vitale.services.model.Category;
 
 /**
  * A data access object (DAO) providing persistence and search support for
  * Category entities.
  * 
- * @see org.vitale.services.Model.Category
+ * @see org.vitale.services.model.Category
  * @author Alessandro Vitale
  */
 

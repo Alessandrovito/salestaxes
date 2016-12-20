@@ -5,4 +5,4 @@
  * @author Ale-Dell
  *
  */
-package org.vitale.services.DAOImpl;
+package org.vitale.services.dao.impl;

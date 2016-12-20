@@ -5,4 +5,4 @@
  * @author Ale-Dell
  *
  */
-package org.vitale.presentation.Basket;
+package org.vitale.presentation.basket;

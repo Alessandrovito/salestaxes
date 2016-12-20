@@ -1,8 +1,8 @@
-package org.vitale.services.DAO;
+package org.vitale.services.dao;
 
 
-import org.vitale.services.Model.Category;
-import org.vitale.services.Model.Tax;
+import org.vitale.services.model.Category;
+import org.vitale.services.model.Tax;
 
 public abstract class TaxDAO {
 	

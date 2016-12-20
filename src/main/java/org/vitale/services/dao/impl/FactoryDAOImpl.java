@@ -1,10 +1,15 @@
-package org.vitale.services.DAOImpl;
+package org.vitale.services.dao.impl;
 
-import org.vitale.services.DAO.CategoryDAO;
-import org.vitale.services.DAO.FactoryDAO;
-import org.vitale.services.DAO.ItemDAO;
-import org.vitale.services.DAO.TaxDAO;
-
+import org.vitale.services.dao.CategoryDAO;
+import org.vitale.services.dao.FactoryDAO;
+import org.vitale.services.dao.ItemDAO;
+import org.vitale.services.dao.TaxDAO;
+/**
+ * This is one implemenation of Factory DAO that need to
+ * implements method to get concrete Implementation of Category, Item, Tax
+ * @author Ale-Dell
+ *
+ */
 public class FactoryDAOImpl extends FactoryDAO {
 
 	 public CategoryDAO getCategoryDAO() {

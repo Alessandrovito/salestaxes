@@ -1,4 +1,4 @@
-package org.vitale.services.Model;
+package org.vitale.services.model;
 
 
 public class Item {
@@ -40,12 +40,15 @@ public class Item {
 		this.price = price;
 	}
 
+	@Override
+	public String toString() {
+		String imp = (isImported) ? "imported" : "";
+		return quantity + " " + imp + " " + name + " at " + price ;
+	}
 	
-	public String toStringOutputWithTax(float TaxPerc) {
-		float priceWithTax = price + (TaxPerc * price);
-		String imp = (isImported) ? "is imported" : "";
-		
-		return quantity + " " + imp + ":" + name + " " + priceWithTax ;
+	public String toStringOutputFinalPrice(float finalPrice) {
+		String imp = (isImported) ? "imported" : "";
+		return quantity + " " + imp + " " + name + " : " + finalPrice ;
 	}
 	
 	

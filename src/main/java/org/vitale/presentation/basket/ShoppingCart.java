@@ -1,17 +1,14 @@
-package org.vitale.presentation.Basket;
+package org.vitale.presentation.basket;
 
-import java.util.ArrayList;
+
 import java.util.Iterator;
-import java.util.List;
-
-import org.vitale.services.Model.Item;
-import org.vitale.services.ShoppingController.ShoppingController;
-import org.vitale.services.controller.ControllerServices;
+import org.vitale.business.controller.ShoppingController;
+import org.vitale.services.model.Item;
 
 
 /**
  * 
- * Shopping Cart
+ * Shopping Cart to provide for all INPUTs
  * 
  * @author Alessandro Vitale
  *
@@ -19,8 +16,6 @@ import org.vitale.services.controller.ControllerServices;
 
 public class ShoppingCart {
 
-	//private ControllerServices cs = new ControllerServices();
-	
 	private ShoppingController ctr = new ShoppingController();
 	
 
@@ -42,37 +37,48 @@ public class ShoppingCart {
 		StringBuilder toPrint = new StringBuilder();
 
 		Iterator<Item> itIter = ctr.findAllItemsInShop().iterator();
-		float totalPrice = 0.0f;
-		float totalTax = 0.0f;
-		float currentAppliedTax = 0.0f;
+		float totalPrice, totalTax, currentAppliedTax, currentPrice, currentPriceWithTax;
+		totalPrice = totalTax = currentAppliedTax =  currentPrice = currentPriceWithTax = 0.0f;
 
-		toPrint.append("\nINPUT :" + inputNumber);
+		toPrint.append("\nOUTPUT " + inputNumber + ":");
 
 		while (itIter.hasNext()) {
 			Item currentItem = itIter.next();
 			currentAppliedTax = ctr.calculateTaxPerItem(currentItem);
-
+			currentPrice = currentItem.getPrice();
+			currentPriceWithTax = currentAppliedTax + currentPrice;
 			toPrint.append("\n").append(
-					currentItem.toStringOutputWithTax(currentAppliedTax));
+					currentItem.toStringOutputFinalPrice(currentPriceWithTax));
 
-			totalPrice += currentItem.getPrice();
+			totalPrice += currentPriceWithTax;
 			totalTax += currentAppliedTax;
 
 		}
 
-		float rem = totalTax % 0.05f;
-		if (rem != 0.0f) {
-			if (rem > 0.025f)
-				totalTax -= rem;
-			else
-				totalTax += (0.05f - rem);
-		}
-
 		toPrint.append("\nSales Tax:" + totalTax);
-		toPrint.append("\nTotal :" + totalTax + totalPrice);
+		toPrint.append("\nTotal :" + totalPrice);
 
 		System.out.println(toPrint.toString());
 
 	}
+	
+	public void printInputShoppingCart(int inputNumber) {
+
+		StringBuilder toPrint = new StringBuilder();
+		Iterator<Item> itIter = ctr.findAllItemsInShop().iterator();
+
+		toPrint.append("\nINPUT " + inputNumber + ":");
+
+		while (itIter.hasNext()) {
+			Item currentItem = itIter.next();
+			toPrint.append("\n").append(
+					currentItem.toString());
+		}
+
+		System.out.println(toPrint.toString());
+
+	}
+	
+	
 
 }

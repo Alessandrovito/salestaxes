@@ -5,4 +5,4 @@
  * @author Ale-Dell
  *
  */
-package org.vitale.services.Model;
+package org.vitale.services.model;

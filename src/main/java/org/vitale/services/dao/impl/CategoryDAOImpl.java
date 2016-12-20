@@ -1,14 +1,11 @@
-package org.vitale.services.DAOImpl;
-
+package org.vitale.services.dao.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.vitale.services.DAO.CategoryDAO;
-import org.vitale.services.Model.Category;
-
-
+import org.vitale.services.dao.CategoryDAO;
+import org.vitale.services.model.Category;
 
 /**
  * Implementation DAO is simple and Data are stored in List collection
@@ -21,40 +18,35 @@ public class CategoryDAOImpl extends CategoryDAO {
 
 	// list is working as database
 	private final List<Category> categories;
-	
-	
-	public CategoryDAOImpl(){
-		
+
+	public CategoryDAOImpl() {
+
 		categories = new ArrayList<Category>();
 
 	}
-	
-	
-	public void save(Category cat){
+
+	public void save(Category cat) {
 		categories.add(cat);
-		
+
 	}
-	
-	public List<Category> findAll(){
+
+	public List<Category> findAll() {
 		return categories;
-		
+
 	}
-	
-	public Category findByName(String name){
-		
+
+	public Category findByName(String name) {
+
 		Iterator<Category> catIter = categories.iterator();
-	    while (catIter.hasNext())
-	    {
-	    	Category currentItem = catIter.next();
-	    	if (currentItem.getName().equalsIgnoreCase(name))
-	    		return currentItem;
-		
-	    }
-		
+		while (catIter.hasNext()) {
+			Category currentItem = catIter.next();
+			if (currentItem.getName().equalsIgnoreCase(name))
+				return currentItem;
+
+		}
+
 		return null;
-		
+
 	}
 
-
-	
 }

@@ -1,12 +1,12 @@
-package org.vitale.services.DAOImpl;
+package org.vitale.services.dao.impl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.vitale.services.DAO.ItemDAO;
-import org.vitale.services.Model.Category;
-import org.vitale.services.Model.Item;
+import org.vitale.services.dao.ItemDAO;
+import org.vitale.services.model.Category;
+import org.vitale.services.model.Item;
 /**
  * Implementation DAO is simple and Data are stored in List collection
  * 

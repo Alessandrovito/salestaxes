@@ -1,7 +1,14 @@
-package org.vitale.services.DAO;
+package org.vitale.services.dao;
 
-import org.vitale.services.DAOImpl.FactoryDAOImpl;
+import org.vitale.services.dao.impl.FactoryDAOImpl;
 
+
+/**
+ * This is a Factory for DAO . This class create implementation of Factory DAO
+ * This simpe exaple create only one type of FactoryDAO (FactoryDAOImpl)
+ * @author Ale-Dell
+ *
+ */
 public abstract class FactoryDAO {
 	
 

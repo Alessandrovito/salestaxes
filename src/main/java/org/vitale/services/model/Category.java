@@ -1,4 +1,4 @@
-package org.vitale.services.Model;
+package org.vitale.services.model;
 
 public class Category {
 
