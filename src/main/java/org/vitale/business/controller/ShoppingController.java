@@ -17,7 +17,7 @@ import org.vitale.services.model.Tax;
  * This class is delegated to implements Controller of Shopping System.
  * All logic between Data access and User Presentation  are implemented here.
  *  
- * @author Ale-Dell
+ * @author Alessandro Vitale
  *
  */
 public class ShoppingController {

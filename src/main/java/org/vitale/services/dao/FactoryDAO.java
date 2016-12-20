@@ -6,7 +6,7 @@ import org.vitale.services.dao.impl.FactoryDAOImpl;
 /**
  * This is a Factory for DAO . This class create implementation of Factory DAO
  * This simpe exaple create only one type of FactoryDAO (FactoryDAOImpl)
- * @author Ale-Dell
+ * @author Alessandro Vitale
  *
  */
 public abstract class FactoryDAO {

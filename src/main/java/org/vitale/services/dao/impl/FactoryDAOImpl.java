@@ -7,7 +7,7 @@ import org.vitale.services.dao.TaxDAO;
 /**
  * This is one implemenation of Factory DAO that need to
  * implements method to get concrete Implementation of Category, Item, Tax
- * @author Ale-Dell
+ * @author Alessandro Vitale
  *
  */
 public class FactoryDAOImpl extends FactoryDAO {

@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Ale-Dell
+ * @author Alessandro Vitale
  *
  */
 package org.vitale.test;
