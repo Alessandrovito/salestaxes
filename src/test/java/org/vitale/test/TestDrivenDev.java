@@ -119,6 +119,43 @@ public class TestDrivenDev {
 	
 	
 	@Test
+	public void testCalculteInput3() {
+
+		Float priceWithTax = 0.0f;
+		Float priceWithTaxTotal = 0.0f;
+		
+		Item bott1 = ctr.insertItem("bottle of perfume ",1, CategoryDAO.CAT_GENERIC, true, 27.99f);
+		priceWithTax = ctr.calculatePriceWithTaxPerItem(bott1);
+		priceWithTaxTotal += priceWithTax;
+		System.out.println("Tax Applied is " + priceWithTax);
+		Assert.assertEquals(32.19f, priceWithTax, 0.0f);
+		
+		Item bott2 = ctr.insertItem("bottle of perfume ",1, CategoryDAO.CAT_GENERIC, false, 18.99f);
+		priceWithTax = ctr.calculatePriceWithTaxPerItem(bott2);
+		priceWithTaxTotal += priceWithTax;
+		System.out.println("Tax Applied is " + priceWithTax);
+		Assert.assertEquals(20.89f, priceWithTax, 0.0f);
+		
+		Item pills = ctr.insertItem("headache pills", 1, CategoryDAO.CAT_MED, false, 9.75f);
+		priceWithTax = ctr.calculatePriceWithTaxPerItem(pills);
+		priceWithTaxTotal += priceWithTax;
+		System.out.println("Tax Applied is " + priceWithTax);
+		Assert.assertEquals(9.75f, priceWithTax, 0.0f);
+		
+		Item choco = ctr.insertItem("chocolates", 1, CategoryDAO.CAT_FOOD, true, 11.25f);
+		priceWithTax = ctr.calculatePriceWithTaxPerItem(choco);
+		priceWithTaxTotal += priceWithTax;
+		System.out.println("Tax Applied is " + priceWithTax);
+		Assert.assertEquals(11.85f, priceWithTax, 0.0f);
+		
+		System.out.println("Total Price  Applied is " + priceWithTaxTotal);
+		Assert.assertEquals(74.68f, priceWithTaxTotal, 0.0f);
+		
+		
+	}
+	
+	
+	@Test
 	public void testCalcultePriceWithTaxImported() {
 
 		Float priceWithTax = 0.0f;
